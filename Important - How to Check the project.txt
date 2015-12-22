@@ -1,0 +1,9 @@
+To open the Project need Visual Studio 2012 or Up Version.
+
+Then Copy the 'DB' folder to Local Disk ' C: '  Only C. Not in the inside folders of C.
+(For the Connection String) So the Connection String Path will be C:\DB\HR.mdf  like this Way. 
+
+Then Open and Run the project using, Or Run Using HRM folder HRManagement application file 
+inside 'Release' folder.
+Password: 123
+UserName : admin

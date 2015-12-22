@@ -1,0 +1,75 @@
+﻿<Page x:Class="HRManagement.View.PayRoll"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="335" d:DesignWidth="600"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="PayRoll">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary\GridView.xaml"/>
+                <ResourceDictionary Source="ResDictionary\SearchControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <!-- Search TextBox -->
+            <Style x:Key="TxtSrch" BasedOn="{StaticResource TxtSearch}" TargetType="{x:Type TextBox}">
+                <EventSetter Event="KeyDown" Handler="TxtBoxSearch"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxBoxSearchText,Mode=TwoWay}"/>
+                <Setter Property="IsReadOnly" Value="{Binding Path=TxtBoxSearchReadOnly, Mode=TwoWay}"/>
+                <Setter Property="MaxLength" Value="{Binding Path=TxtBoxSearchMaxLength}"/>
+            </Style>
+            <!-- Date Picker -->
+            <Style x:Key="DtPicker" TargetType="{x:Type DatePicker}">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Margin" Value="60,55,0,0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Visibility" Value="{Binding ElementName=MonthPicker, Path=IsSelected,Mode=OneWay, Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="SelectedDateChanged" Handler="DtPickerSelection"/>
+            </Style>
+            <!-- Search ComboBox -->
+            <Style x:Key="CmbSrch" BasedOn="{StaticResource CmbSearch}" TargetType="{x:Type ComboBox}">
+                <EventSetter Event="SelectionChanged" Handler="SearchItem"/>
+            </Style>
+            <!-- Search Button -->
+            <Style x:Key="BtnSrch" BasedOn="{StaticResource BtnSearch}" TargetType="{x:Type Button}">
+                <EventSetter Event="Click" Handler="View"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid>
+        <!-- Employee PayRoll Records -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource LblSearch}"/>
+        <ComboBox x:Name="CmbSearch" Style="{StaticResource CmbSrch}">
+            <ComboBoxItem>All</ComboBoxItem>
+            <ComboBoxItem>Registration ID</ComboBoxItem>
+            <ComboBoxItem>Name</ComboBoxItem>
+            <ComboBoxItem x:Name="MonthPicker">Month/Year</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="Txt" Style="{StaticResource TxtSrch}"/>
+        <DatePicker x:Name="DtPicker" Style="{StaticResource DtPicker}"/>
+        <Button x:Name="BtnSearch" Click="View" Style="{StaticResource BtnSrch}"/>
+        <!-- GridView Body -->
+        <ListView x:Name="MyGrid" Grid.Row="1" Margin="8,6,8,8" Style="{StaticResource GridViewTemplate}">
+            <ListView.View>
+                <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                    <GridViewColumn Header="Reg. ID" Width="65" DisplayMemberBinding="{Binding Path=RegID}"/>
+                    <GridViewColumn Header="Name" Width="160" DisplayMemberBinding="{Binding Path=FullName}"/>
+                    <GridViewColumn Header="Year" Width="70" DisplayMemberBinding="{Binding Path=Year}"/>
+                    <GridViewColumn Header="Month" Width="70" DisplayMemberBinding="{Binding Path=Month}"/>
+                    <GridViewColumn Header="OTP" Width="70" DisplayMemberBinding="{Binding Path=OTPayment}"/>
+                    <GridViewColumn Header="Basic Salary" Width="100" DisplayMemberBinding="{Binding Path=BasicSalary}"/>
+                    <GridViewColumn Header="Total" Width="100" DisplayMemberBinding="{Binding Path=Total}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

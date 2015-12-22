@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="HRManagement.exe" version="1.0.0.0" publicKeyToken="bb98962be06288a8" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="HRManagement" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="HRManagement.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Windows.Controls.Ribbon" version="4.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.dll" size="1116760">
+      <assemblyIdentity name="EntityFramework" version="5.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>PoNKnbJ6KecCojr5W66/YqltD4tkc9jUL2AUPZPv3LU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HRManagement.exe" size="1206272">
+      <assemblyIdentity name="HRManagement" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>O3GrDcU6vmgypFcSUI/Bri+g2Vx061JGsCbMxJvmT1k=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="HRManagement.exe.config" size="828">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>c1WnuWjTTky0xXkVpwMixr/6U6o6swasIAHhjlyLqnY=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DHJ\Dhanuka" issuerKeyHash="6d8512a5401d8265b54c5db36b268adaf1608642" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>c4PoYupkZJzZa4w+9vTlgzyKenfQ2EnzRZsCXy7T8GY=</DigestValue></Reference></SignedInfo><SignatureValue>NjsLtTH8Hi70zG9KvT7KWjVOZgZdcsWkdqH6OIxNkruBzUyTifVedk8bGuDHD5TXuHLlG00KpAXpXndNOOfy5L5yXDcXerImnDYoAxSUoLK3Ryr2vPa3L9E01nhxZGWkfIszb5JX8IuYDkJUH8Ax70ucIUoaPqzTbV3EyOHyfl0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>n6rhYaa6bX6MMauI4kLT+YRWUsCLDW0wwnnVO8smv4oO+X9W7Z/ZjcJFdHrBh9g68UU9wFiNlVOJ5xUyHgZ2PGsuSK6SKVegpOYcAtKK3TxtrywCZ5pyPMNuVnhc0X9YrIp9MoOyb06b+YxPV8OSXu7K+Tl5SElYcYZc59vCDFU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="66f0d32e5f029b45f349d8d0777a8a3c83e5f4f63e8c6bd99c6464ea62e88373" Description="" Url=""><as:assemblyIdentity name="HRManagement.exe" version="1.0.0.0" publicKeyToken="bb98962be06288a8" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DHJ\Dhanuka</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>nwR9G4HFA7625AbodwLoZzp2klYFsCZcwGI2iljITSg=</DigestValue></Reference></SignedInfo><SignatureValue>mKPbTxJcSPSJ7d5f6DvcOedc9EDYjUifyOpC9qWtZGYBjd5obSEcOQkSoAsObus8nLRW7stS4GYB+hvQO/KsWOWrvaX0H4sNk+dGQ4MRL7k/hwtH4n8vbkXnXnF/r1S5lZ2gB1XqVBJcVZHESccMu1Moo74eGhOowIEn1Rvcz/Q=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>n6rhYaa6bX6MMauI4kLT+YRWUsCLDW0wwnnVO8smv4oO+X9W7Z/ZjcJFdHrBh9g68UU9wFiNlVOJ5xUyHgZ2PGsuSK6SKVegpOYcAtKK3TxtrywCZ5pyPMNuVnhc0X9YrIp9MoOyb06b+YxPV8OSXu7K+Tl5SElYcYZc59vCDFU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBxTCCAS6gAwIBAgIQVRXuxIAmaJZNv0VDZnLfGzANBgkqhkiG9w0BAQsFADAhMR8wHQYDVQQDHhYARABIAEoAXABEAGgAYQBuAHUAawBhMB4XDTE1MDkwMzA3MzYxN1oXDTE2MDkwMjEzMzYxN1owITEfMB0GA1UEAx4WAEQASABKAFwARABoAGEAbgB1AGsAYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAn6rhYaa6bX6MMauI4kLT+YRWUsCLDW0wwnnVO8smv4oO+X9W7Z/ZjcJFdHrBh9g68UU9wFiNlVOJ5xUyHgZ2PGsuSK6SKVegpOYcAtKK3TxtrywCZ5pyPMNuVnhc0X9YrIp9MoOyb06b+YxPV8OSXu7K+Tl5SElYcYZc59vCDFUCAwEAATANBgkqhkiG9w0BAQsFAAOBgQCESMK8x5rKzZR2Yh8LQ5wTe6YJr/XotD9lqgBNBVJcUyHb+pnsUys804xzq5HhRLC/ZsL1uSZwpjgwn8/muV+DdZOPl2W1xBLy+i6vc17EeM2ktsYeZQ7PkViL7ydKqlSX84spc7TfskMFYFShHnqXwuVMro+w/1mv3gc82QkdAw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

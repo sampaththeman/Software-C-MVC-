@@ -1,0 +1,153 @@
+﻿<Page x:Class="HRManagement.View.JobRole"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="335" d:DesignWidth="600"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="Job Role">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary/FrameBody.xaml"/>
+                <ResourceDictionary Source="ResDictionary/SearchControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <!-- Role ID -->
+            <Style x:Key="TxtRoleID" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="6"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxJobRoleID, Mode=TwoWay}"/>
+            </Style>
+            <!-- Designation -->
+            <Style x:Key="TxtDesig" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="40"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxDesignation, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="LettersOnly"/>
+            </Style>
+            <!-- Basic Salary -->
+            <Style x:Key="TxtBSal" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="6"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxBSalary, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- OTH -->
+            <Style x:Key="TxtOTH" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="3"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxOTH, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- OTP -->
+            <Style x:Key="TxtOTP" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="4"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxOTP, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- Short Leaves -->
+            <Style x:Key="TxtShLeave" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="2"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxShortLeave, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- Holidays -->
+            <Style x:Key="TxtHolidays" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="3"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxHolidays, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- Update Check Boxes -->
+            <Style x:Key="CheckUpdate" BasedOn="{StaticResource CheckBox}" TargetType="{x:Type CheckBox}">
+                <Setter Property="Visibility" Value="{Binding  Path=ChckBoxVis, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="Click" Handler="CheckState"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Role ID -->
+            <Label Grid.Row="1" Content="Role ID" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="1">
+                <TextBox  Style="{StaticResource TxtRoleID}"/>
+            </WrapPanel>
+
+            <!-- Designation -->
+            <Label Grid.Row="2" Content="Designation" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="2">
+                <TextBox Style="{StaticResource TxtDesig}"/>
+                <CheckBox x:Name="CheckDesig" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Basic Salary -->
+            <Label Grid.Row="4" Content="Basic Salary" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="4">
+                <TextBox Style="{StaticResource TxtBSal}"/>
+                <CheckBox x:Name="CheckBS" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- OTH -->
+            <Label Grid.Row="5" Content="OTH (per Month)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="5">
+                <TextBox Style="{StaticResource TxtOTH}"/>
+                <CheckBox x:Name="CheckOTH" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- OTP -->
+            <Label Grid.Row="6" Content="OTP (per Hour)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="6">
+                <TextBox Style="{StaticResource TxtOTP}"/>
+                <CheckBox x:Name="CheckOTP" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Short Leaves -->
+            <Label Grid.Row="7" Content="Short Leaves (per Month)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="7">
+                <TextBox Style="{StaticResource TxtShLeave}"/>
+                <CheckBox x:Name="CheckShLeave" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Holidays -->
+            <Label Grid.Row="8" Content="Holidays (per Year)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="8">
+                <TextBox Style="{StaticResource TxtHolidays}"/> 
+                <CheckBox x:Name="CheckHoliday" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+        </Grid>
+        <WrapPanel Orientation="Vertical" Grid.Column="1">
+            <Button x:Name="RBtnAdd" Click="Register" Style="{StaticResource BtnSearch}" Content="Add" Margin="10,50,0,0"/>
+            <Button x:Name="RBtnUpdate"  Click="Register" Style="{StaticResource BtnSearch}" Content="Update" Margin="10,10,0,0"/>
+            <Button x:Name="RBtnDelete" Click="Register" Style="{StaticResource BtnSearch}" Content="Remove" Margin="10,10,0,0"/>
+            <Button x:Name="RBtnSearch" Click="Register" Style="{StaticResource BtnSearch}" Content="Search" Margin="10,10,0,0"/>
+        </WrapPanel>
+    </Grid>
+</Page>

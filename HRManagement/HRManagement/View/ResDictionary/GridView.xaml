@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+                            <!-- Grid View Header -->
+    <DataTemplate x:Key="BlueHeader">
+        <StackPanel Orientation="Horizontal" Margin="-5,-5,-5,-5" Width="200">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF223B84" Offset="1"/>
+                    <GradientStop Color="#FF57A0F4" Offset="0.5"/>
+                    <GradientStop Color="#FF4B94EC" Offset="0.5"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock Margin="10" Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </DataTemplate>
+
+                            <!-- Grid View BackGround -->
+    <LinearGradientBrush x:Key="GridBackGround" EndPoint="2,0.919" StartPoint="0.061,0.081">
+        <GradientStop Color="#FFFFE07E" Offset="0"/>
+        <GradientStop Color="#FFFFFAEA" Offset="1"/>
+    </LinearGradientBrush>
+
+                            <!-- Item Container Style -->
+    <Style x:Key="ItemContainerStyle" TargetType="{x:Type ListViewItem}"  >
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Background" Value="#5EF4E057" />
+        <Setter Property="Foreground" Value="#FF4B94EC"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="DarkBlue" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFFC704" Offset="0.986"/>
+                            <GradientStop Color="#FFF4E057" Offset="0.5"/>
+                            <GradientStop Color="#FFF4E057" Offset="0.51"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+                            <!-- ListView Style Using above Resources -->
+    <Style x:Key="GridViewTemplate" TargetType="{x:Type ListView}">
+        <Setter Property="Background" Value="{StaticResource GridBackGround}"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ItemContainerStyle}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Margin" Value="8,6,8,8"/>
+    </Style>
+</ResourceDictionary>

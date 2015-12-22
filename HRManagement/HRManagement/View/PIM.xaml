@@ -1,0 +1,165 @@
+﻿<Page x:Class="HRManagement.View.PIM"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignHeight="335" d:DesignWidth="600" Title="Registration"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary/FrameBody.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+                                <!-- Childrens -->
+                    <!-- BasedOn used To inherit another one -->
+
+            <!-- Name -->
+            <Style x:Key="TxtName" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="ToolTip" Value="Letters Only"/>
+                <Setter Property="MaxLength" Value="25"/>
+                <EventSetter Event="KeyDown" Handler="LettersOnly"/>
+                <EventSetter Event="LostFocus" Handler="NameConverter"/>
+            </Style>
+            <!-- Contact No -->
+            <Style x:Key="TxtContact" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="ToolTip" Value="Numerics Only"/>
+                <Setter Property="MaxLength" Value="10"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            
+            <!-- RegID -->
+            <Style x:Key="TxtRegID" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="MaxLength" Value="8"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxRegID,Mode=TwoWay}"/>
+            </Style>
+            <!-- NIC -->
+            <Style x:Key="TxtNIC" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="MaxLength" Value="10"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxNIC,Mode=TwoWay}"/>
+            </Style>
+            <!-- FName -->
+            <Style x:Key="TxtFName" BasedOn="{StaticResource TxtName}" TargetType="{x:Type TextBox}">
+                <Setter Property="Text" Value="{Binding Path=TxtBoxFName,Mode=TwoWay}"/>
+            </Style>
+            <!-- LName -->
+            <Style x:Key="TxtLName" BasedOn="{StaticResource TxtName}" TargetType="{x:Type TextBox}">
+                <Setter Property="Text" Value="{Binding Path=TxtBoxLName,Mode=TwoWay}"/>
+            </Style>
+            <!-- Tel No. -->
+            <Style x:Key="TxtTelNo" BasedOn="{StaticResource TxtContact}" TargetType="{x:Type TextBox}">
+                <Setter Property="Text" Value="{Binding Path=TxtBoxTelNo,Mode=TwoWay}"/>
+            </Style>
+            <!-- Mob No. -->
+            <Style x:Key="TxtMobNo" BasedOn="{StaticResource TxtContact}" TargetType="{x:Type TextBox}">
+                <Setter Property="Text" Value="{Binding Path=TxtBoxMobNo,Mode=TwoWay}"/>
+            </Style>
+            <!-- Address -->
+            <Style x:Key="TxtAddress" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="MaxLength" Value="50"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxAddress,Mode=TwoWay}"/>
+            </Style>
+            <!-- Email -->
+            <Style x:Key="TxtEmail" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="MaxLength" Value="25"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxEmail,Mode=TwoWay}"/>
+            </Style>
+            <!-- Update Check Boxes -->
+            <Style x:Key="CheckUpdate" BasedOn="{StaticResource CheckBox}" TargetType="{x:Type CheckBox}">
+                <Setter Property="Visibility" Value="{Binding  Path=ChckBoxVis, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="Click" Handler="CheckState"/>
+            </Style>
+            
+            <!-- Type (Customer, Staff, Supplier) -->
+            <Style x:Key="TxtType" TargetType="{x:Type TextBlock}">
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Text" Value="{Binding Path=TxtTypeText, Mode=TwoWay}"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="270"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Registration Fields -->
+        <Grid Grid.Row="0" ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!-- Registration ID -->
+            <Label x:Name="LblID" Grid.Column="0" Grid.Row="1" Content="Registration ID" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="1">
+                <TextBox x:Name="TxtID" Style="{StaticResource TxtRegID}"/>
+            </WrapPanel>
+            <!-- NIC No -->
+            <Label x:Name="LblNIC" Grid.Column="0" Grid.Row="2" Content="N.I.C No." Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="2">
+                <TextBox x:Name="TxtNIC"  Style="{StaticResource TxtNIC}"/>
+                <CheckBox x:Name="CheckNIC" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- First Name -->
+            <Label x:Name="LblFname" Grid.Column="0" Grid.Row="3" Content="First Name" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="3">
+                <TextBox x:Name="TxtFname" Style="{StaticResource TxtFName}"/>
+                <CheckBox x:Name="CheckFname" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Last Name -->
+            <Label x:Name="LblLname" Grid.Column="0" Grid.Row="4" Content="Last Name" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="4">
+                <TextBox x:Name="TxtLname" Style="{StaticResource TxtLName}"/>
+                <CheckBox x:Name="CheckLname" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Telephone No -->
+            <Label x:Name="LblTelNo" Grid.Column="0" Grid.Row="5" Content="Telephone No." Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="5">
+                <TextBox x:Name="TxtTelNo" Style="{StaticResource TxtTelNo}"/>
+                <CheckBox x:Name="CheckTelNo" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Mobile No -->
+            <Label x:Name="LblMobNo" Grid.Column="0" Grid.Row="6" Content="Mobile No." Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="6">
+                <TextBox x:Name="TxtMobNo" Style="{StaticResource TxtMobNo}"/>
+                <CheckBox x:Name="CheckMobNo" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Address -->
+            <Label x:Name="LblAddress" Grid.Column="0" Grid.Row="7" Content="Address" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="7">
+                <TextBox x:Name="TxtAddress" Style="{StaticResource TxtAddress}"/>
+                <CheckBox x:Name="CheckAddress" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- Email -->
+            <Label x:Name="LblEmail" Grid.Column="0" Grid.Row="8" Content="Email" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="8">
+                <TextBox x:Name="TxtEmail" Style="{StaticResource TxtEmail}"/>
+                <CheckBox x:Name="CheckEmail" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+        </Grid>
+        <TextBlock Grid.Row="1" Style="{StaticResource TxtType}"/>
+    </Grid>
+</Page>

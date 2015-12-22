@@ -1,0 +1,125 @@
+﻿<Page x:Class="HRManagement.View.EmpRole"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="335" d:DesignWidth="600"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="Employee Role">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary/SearchControls.xaml"/>
+                <ResourceDictionary Source="ResDictionary/GridView.xaml"/>
+                <ResourceDictionary Source="ResDictionary/FrameBody.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+            <!-- Job Role ID -->
+            <Style x:Key="LblJRID" BasedOn="{StaticResource Label}" TargetType="{x:Type Label}">
+                <Setter Property="Content" Value="Job Role ID"/>
+                <Setter Property="Width" Value="110"/>
+                <Setter Property="Margin" Value="0,0,200,184"/>
+            </Style>
+            <Style x:Key="TxtJRID" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="MaxLength" Value="6"/>
+                <Setter Property="Margin" Value="153,0,0,186"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxJRID,Mode=TwoWay}"/>
+                <EventSetter Event="GotFocus" Handler="LstBoxVisibility"/>
+                <EventSetter Event="LostFocus" Handler="LstBoxVisibility"/>
+                <EventSetter Event="KeyDown" Handler="JRoleList"/>
+                <EventSetter Event="KeyUp" Handler="JRoleList"/>
+            </Style>
+            <Style x:Key="LstJRID" TargetType="{x:Type ListBox}">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="100"/>
+                <Setter Property="Margin" Value="106,0,0,57"/>
+                <Setter Property="Visibility" Value="{Binding Path=LstBoxJRIDVis,Mode=TwoWay,Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="SelectionChanged" Handler="JRIDSelection"/>
+            </Style>
+
+            <!-- Employee ID -->
+            <Style x:Key="LblEmpID" BasedOn="{StaticResource Label}" TargetType="{x:Type Label}">
+                <Setter Property="Content" Value="Employee ID"/>
+                <Setter Property="Width" Value="110"/>
+                <Setter Property="Margin" Value="0,0,200,50"/>
+            </Style>
+            <Style x:Key="TxtEmpID" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="MaxLength" Value="8"/>
+                <Setter Property="Margin" Value="153,0,0,52"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxEmpID,Mode=TwoWay}"/>
+                <EventSetter Event="GotFocus" Handler="LstBoxVisibility"/>
+                <EventSetter Event="LostFocus" Handler="LstBoxVisibility"/>
+                <EventSetter Event="KeyDown" Handler="EmployeeList"/>
+                <EventSetter Event="KeyUp" Handler="EmployeeList"/>
+            </Style>
+            <Style x:Key="LstEmpID" TargetType="{x:Type ListBox}">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="100"/>
+                <Setter Property="Margin" Value="106,75,0,0"/>
+                <Setter Property="Visibility" Value="{Binding Path=LstBoxEmpIDVis,Mode=TwoWay,Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="SelectionChanged" Handler="EmpIDSelection"/>
+            </Style>
+            
+            <!-- Main List -->
+            <Style x:Key="LstMain" TargetType="{x:Type ListBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="Background" Value="{StaticResource GridBackGround}"/>
+                <Setter Property="Margin" Value="20,15,0,15"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+                <EventSetter Event="KeyDown" Handler="RemoveEmp"/>
+            </Style>
+            
+            <!-- Add To Main List Button -->
+            <Style x:Key="BtnMain" TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="20"/>
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Background" Value="LightBlue"/>
+                <Setter Property="Margin" Value="280,0,0,50"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Content" Value="+"/>
+                <EventSetter Event="Click" Handler="AddToList"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <!--  ******************************************************************************************************************************  -->
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Job Role ID -->
+            <Label Style="{StaticResource LblJRID}"/>
+            <TextBox x:Name="TxtJRID" Style="{StaticResource TxtJRID}"/>
+            <ListBox x:Name="LstJRID" Style="{StaticResource LstJRID}"/>
+            
+            <!-- Employee ID -->
+            <Label Style="{StaticResource LblEmpID}"/>
+            <TextBox x:Name="TxtEmpID" Style="{StaticResource TxtEmpID}"/>
+            <Button Style="{StaticResource BtnMain}"/>
+            <ListBox x:Name="LstEmpID" Style="{StaticResource LstEmpID}"/>
+            
+            <!-- Main List Box -->
+            <ListBox x:Name="EmpRoleList" Grid.Column="1" Style="{StaticResource LstMain}"/>
+        </Grid>
+        <WrapPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="RBtnAdd" Style="{StaticResource BtnSearch}" Content="Assign" Margin="170,20,0,0" Click="AssignRole"/>
+            <Button x:Name="RBtnUpdate" Style="{StaticResource BtnSearch}" Content="Update" Margin="10,20,0,0" Click="AssignRole"/>
+            <Button x:Name="RBtnView" Style="{StaticResource BtnSearch}" Content="View" Margin="10,20,0,0" Click="AssignRole"/>
+        </WrapPanel>
+    </Grid>
+</Page>

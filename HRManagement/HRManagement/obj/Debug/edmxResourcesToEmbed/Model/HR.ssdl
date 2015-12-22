@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HRModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="HRModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Login" EntityType="HRModel.Store.Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staff" EntityType="HRModel.Store.Staff" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Supplier" EntityType="HRModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="NIC" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="FName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="LName" Type="varchar" MaxLength="25" />
+    <Property Name="TelNo" Type="char" MaxLength="10" />
+    <Property Name="MobNo" Type="char" MaxLength="10" />
+    <Property Name="Address" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Uname" />
+    </Key>
+    <Property Name="Uname" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="NIC" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="FName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="LName" Type="varchar" MaxLength="25" />
+    <Property Name="TelNo" Type="char" MaxLength="10" />
+    <Property Name="MobNo" Type="char" MaxLength="10" />
+    <Property Name="Address" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="NIC" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="FName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="LName" Type="varchar" MaxLength="25" />
+    <Property Name="TelNo" Type="char" MaxLength="10" />
+    <Property Name="MobNo" Type="char" MaxLength="10" />
+    <Property Name="Address" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+  </EntityType>
+</Schema>

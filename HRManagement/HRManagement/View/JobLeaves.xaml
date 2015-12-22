@@ -1,0 +1,121 @@
+﻿<Page x:Class="HRManagement.View.JobLeaves"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="335" d:DesignWidth="600"
+	  DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="Job Leaves">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary/FrameBody.xaml"/>
+                <ResourceDictionary Source="ResDictionary/SearchControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <!-- Staff ID -->
+            <Style x:Key="TxtStfID" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="8"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxStaffID, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="StaffIDCheck"/>
+                <EventSetter Event="KeyUp" Handler="StaffIDCheck"/>
+            </Style>
+            <!-- Name -->
+            <Style x:Key="TxtName" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="40"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxName, Mode=TwoWay}"/>
+            </Style>
+            <!-- No Of Days -->
+            <Style x:Key="TxtDayCount" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="4"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxNOD, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="NumOnly"/>
+            </Style>
+            <!-- Reason -->
+            <Style x:Key="TxtReason" BasedOn="{StaticResource TxtBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="MaxLength" Value="80"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxReason, Mode=TwoWay}"/>
+                <EventSetter Event="KeyDown" Handler="LettersOnly"/>
+            </Style>
+            <!-- Update Check Boxes -->
+            <Style x:Key="CheckUpdate" BasedOn="{StaticResource CheckBox}" TargetType="{x:Type CheckBox}">
+                <Setter Property="Visibility" Value="{Binding  Path=ChckBoxVis, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="Click" Handler="CheckState"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources> 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Staff ID -->
+            <Label Grid.Row="1" Content="Staff Reg. ID" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="1">
+                <TextBox  Style="{StaticResource TxtStfID}"/>
+            </WrapPanel>
+
+            <!-- Name -->
+            <Label Grid.Row="2" Content="Name" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="2">
+                <TextBox Style="{StaticResource TxtName}"/>
+            </WrapPanel>
+
+            <!-- Date From -->
+            <Label Grid.Row="4" Content="Date (From)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="4">
+                <DatePicker Width="200" SelectedDate="{Binding Path=TxtBoxDFrom,Mode=TwoWay}" SelectedDateChanged="NoOfDaysCount"/>
+            </WrapPanel>
+
+            <!-- Date To -->
+            <Label Grid.Row="5" Content="Date (To)" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="5">
+                <DatePicker Width="200" SelectedDate="{Binding Path=TxtBoxDTo,Mode=TwoWay}" SelectedDateChanged="NoOfDaysCount"/>
+                <CheckBox x:Name="CheckDTo" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+
+            <!-- No. Of Days -->
+            <Label Grid.Row="6" Content="No. Of Days" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="6">
+                <TextBox Style="{StaticResource TxtDayCount}"/>
+            </WrapPanel>
+
+            <!-- Reason -->
+            <Label Grid.Row="7" Content="Leave Reason" Style="{StaticResource Label}"/>
+            <WrapPanel Grid.Column="1" Grid.Row="7">
+                <TextBox Style="{StaticResource TxtReason}"/>
+                <CheckBox x:Name="CheckReason" Style="{StaticResource CheckUpdate}"/>
+            </WrapPanel>
+        </Grid>
+        <WrapPanel Orientation="Vertical" Grid.Column="1">
+            <Button x:Name="RBtnAdd" Click="Register" Style="{StaticResource BtnSearch}" Content="Add" Margin="10,50,0,0"/>
+            <Button x:Name="RBtnUpdate"  Click="Register" Style="{StaticResource BtnSearch}" Content="Update" Margin="10,10,0,0"/>
+            <Button x:Name="RBtnDelete" Click="Register" Style="{StaticResource BtnSearch}" Content="Remove" Margin="10,10,0,0"/>
+            <Button x:Name="RBtnSearch" Click="Register" Style="{StaticResource BtnSearch}" Content="Search" Margin="10,10,0,0"/>
+        </WrapPanel>
+    </Grid> 
+</Page>

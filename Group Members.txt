@@ -1,0 +1,7 @@
+	C# Group Assignement
+
+HDCBIS-KA-142-30	D.H Jaysinghe
+HDCBIS-KA-142-48	W.M.E.D.C Senanayake
+HDCBIS-KA-142-20	D.M.S.B Dissanayake
+HDCBIS-KA-142-45	R.M.C.R.B Rathnayake
+HDCBIS-KA-142-35	D.Y Kapuwatte

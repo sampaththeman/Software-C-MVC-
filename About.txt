@@ -1,0 +1,47 @@
+This Project include
+
+1. HR Registration 
+2. Attendance View
+3. Job Role Registration
+4. Employee Role Assigning,
+5. Job Leave Assigning,
+6. Monthly Salary Check
+
+Modules.
+
+Assumptions Taken.
+	Attendance Attend Date,Attend Time, Leave Time are Taken to the DB Using Punch IN Punch Out Machine. Using that Machine Punch in time, Punch out time, Punch in Date, Attendance Will be created.
+
+	Same Job Role Can be Assigned to Multiple Employees at once using 'Emp Role' Assigning interface. First we have to Enter the job Role then enter the Emp No, then had
+to press '+' button. Then it will be added to Main List. Like that we can add Multiple 
+Employees to that main list at once who have same job role. If we want to remove an employee 
+from the main list before assign them to a particular job role, We can select the employee
+from Main list & Press 'DEL' Button.Affter Finishing Adding Click 'Assign' to Assign them to 
+the role.
+If we need to Remove already assigned employee from a particular job role, enter job role at
+the top of that interface and Click 'View' button. Then It will show all the Employees
+belong to that role in main list. Then remove wanted employee from that main list using 'Del' button and finally Click 'UPDATE' Button to Confirm the updatementment of that job role list.
+
+
+Like that if we need to update HR Registration(Customer, Staff or Supplier), Select Required
+HR type(Customer, Staff or Supplier) from Registration Tab and, first enter the RegNo and
+Click Search button to check whether it is available, if available to update checkboxes will
+visible infront of update possible TextFields. Then checked the required Field/s which want to update and Type the new Record on that fields and press Update button.
+(Important - Field Text successfully assigned to variables only when Text fields Lost Focus. Due to Data Binding to Text Fields)
+
+Registration ID will be auto Generated. 
+On every new month & year for every employee, new records will be generated which holds,
+particular Employee Remaining OT Hours for that month, Remaining ShortLeaves for that month,
+remaining Holidays for that years based on his job role.
+
+Salary & Job Leaves Interfaces are not in perfect way. Because they not include ETF , EPF,
+& when getting leaves, checking the validity of the leaves like that some sort of featurs,
+(didn't get time to complete them). Project interface not also completed.
+
+Total staff info,Payroll info can be check using Reports tab.
+
+To close app corectly have to click Home button & Click Logout.
+
+(Note-Password=123, Username=admin)
+
+Note - To Successfully Close application, Should Logout using Home Button.

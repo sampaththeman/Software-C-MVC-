@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HREntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="HRModel.Customer" />
+    <EntitySet Name="Logins" EntityType="HRModel.Login" />
+    <EntitySet Name="Staffs" EntityType="HRModel.Staff" />
+    <EntitySet Name="Suppliers" EntityType="HRModel.Supplier" />
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="NIC" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="LName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="TelNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="MobNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Uname" />
+    </Key>
+    <Property Name="Uname" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="NIC" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="LName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="TelNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="MobNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="RegID" />
+      <PropertyRef Name="NIC" />
+    </Key>
+    <Property Name="RegID" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="NIC" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="LName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="TelNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="MobNo" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

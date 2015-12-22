@@ -1,0 +1,78 @@
+﻿<Page x:Class="HRManagement.View.Attendance"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="335" d:DesignWidth="600"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="Attendence">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictionary\GridView.xaml"/>
+                <ResourceDictionary Source="ResDictionary\SearchControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Boolean To Visibility Converter -->
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            
+                                                    <!--Search Options -->
+            <!-- Search TextBox -->
+            <Style x:Key="TxtSrch" BasedOn="{StaticResource TxtSearch}" TargetType="{x:Type TextBox}">      
+                <EventSetter Event="KeyDown" Handler="TxtBoxSearch"/>
+                <Setter Property="Text" Value="{Binding Path=TxtBoxBoxSearchText,Mode=TwoWay}"/>
+                <Setter Property="IsReadOnly" Value="{Binding Path=TxtBoxSearchReadOnly, Mode=TwoWay}"/>
+                <Setter Property="MaxLength" Value="{Binding Path=TxtBoxSearchMaxLength}"/>
+            </Style>
+            <!-- Date Picker -->
+            <Style x:Key="DtPicker" TargetType="{x:Type DatePicker}">       
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Margin" Value="60,55,0,0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Visibility" Value="{Binding ElementName=dtDate, Path=IsSelected, Mode=TwoWay, Converter={StaticResource BoolToVis}}"/>
+                <EventSetter Event="SelectedDateChanged" Handler="DtPickerSelection"/>
+            </Style>
+            <!-- Search ComboBox -->
+            <Style x:Key="CmbSrch" BasedOn="{StaticResource CmbSearch}" TargetType="{x:Type ComboBox}">     
+                <EventSetter Event="SelectionChanged" Handler="SearchItem"/>
+            </Style>
+            <!-- Search Button -->
+            <Style x:Key="BtnSrch" BasedOn="{StaticResource BtnSearch}" TargetType="{x:Type Button}">       
+                <EventSetter Event="Click" Handler="View"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid>
+        <!-- Employee Attendance Records -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource LblSearch}"/>
+        <ComboBox x:Name="CmbSearch" Style="{StaticResource CmbSrch}">
+            <ComboBoxItem>All</ComboBoxItem>
+            <ComboBoxItem>Registration ID</ComboBoxItem>
+            <ComboBoxItem>Name</ComboBoxItem>
+            <ComboBoxItem x:Name="dtDate">Date</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="Txt" Style="{StaticResource TxtSrch}"/>
+        <DatePicker x:Name="DtPicker" Style="{StaticResource DtPicker}"/>
+        <Button x:Name="BtnSearch" Click="View" Style="{StaticResource BtnSrch}"/>
+                                        <!-- GridView Body -->
+        <ListView x:Name="MyGrid" Grid.Row="1" Margin="8,6,8,8" Style="{StaticResource GridViewTemplate}">
+            <ListView.View>
+                <GridView ColumnHeaderTemplate="{StaticResource BlueHeader}">
+                    <GridViewColumn Header="Reg. ID" Width="65" DisplayMemberBinding="{Binding Path=RegID}"/>
+                    <GridViewColumn Header="Name" Width="160" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Path=Date}"/>
+                    <GridViewColumn Header="Arrival Time" Width="100" DisplayMemberBinding="{Binding Path=ArrivalTime}"/> 
+                    <GridViewColumn Header="Off Time" Width="100" DisplayMemberBinding="{Binding Path=OffTime}"/>
+                    <GridViewColumn Header="Duration" Width="100" DisplayMemberBinding="{Binding Path=Duration}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
